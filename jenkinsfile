@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Compilación Maven') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                bat "mvn clean package -DskipTests"
             }
         }
         stage('Construir imagen Docker') {

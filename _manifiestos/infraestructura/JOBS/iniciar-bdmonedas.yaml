@@ -1,20 +1,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: iniciar-bdmonedas
-  spec:
-    restartPolicy: Never
-    containers:
-      - name: iniciar-bdmonedas
-        image: postgres:16
-        command: ["/bin/sh", "-c"]
-        args:
-          - |
-            echo "Iniciando base de datos bdmonedas..."
-            until pg_isready -h bdmonedas-servicio -p 5432; do
-              echo "Esperando a que la base de datos esté lista..."
-              sleep 5
-            done
-            echo "Base de datos bdmonedas está lista."
-            psql -h bdmonedas-servicio -U monedas -d postgres -c "CREATE DATABASE monedas;"
-            echo "Base de datos 'monedas' creada exitosamente."
+  name: iniciar-bdmonedas-tt
+spec:
+  restartPolicy: Never
+  containers:
+  - name: iniciar-bdmonedas
+    image: postgres:16
+    command: ["/bin/bash", "-c"]
+    args:
+    - |
+      
